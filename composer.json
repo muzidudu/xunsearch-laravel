@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Muzidudu\\XunSearchLaravel\\": "src/"
+            "muzidudu\\xunsearch-laravel\\": "src/"
         }
     },
     "require-dev": {
@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Muzidudu\\XunSearchLaravel\\XunSearchServiceProvider"
+                "muzidudu\\xunsearch-laravel\\XunSearchServiceProvider"
             ]
         },
         "branch-alias": {
