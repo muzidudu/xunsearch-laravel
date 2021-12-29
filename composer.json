@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "muzidudu\\xunsearch-laravel\\": "src/"
+            "Taxusorg\\XunSearchLaravel\\": "src/"
         }
     },
     "require-dev": {
