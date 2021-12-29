@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "muzidudu\\xunsearch-laravel\\XunSearchServiceProvider"
+                "Taxusorg\\XunSearchLaravel\\XunSearchServiceProvider"
             ]
         },
         "branch-alias": {
