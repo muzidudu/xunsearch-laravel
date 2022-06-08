@@ -181,13 +181,21 @@ class XunSearchEngine extends Engine
         $keys = collect($results['docs'])->pluck($this->doc_key_name)->values()->all();
         $objectIdPositions = array_flip($keys);
 
-        return $model->getScoutModelsByIds(
+        $items = $model->getScoutModelsByIds(
             $builder, $keys
         )->filter(function ($model) use ($keys) {
             return in_array($model->getScoutKey(), $keys);
         })->sortBy(function ($model) use ($objectIdPositions) {
             return $objectIdPositions[$model->getScoutKey()];
         })->values();
+        
+        // 设置高亮属性
+        // https://github.com/matchish/laravel-scout-elasticsearch/issues/28
+        // https://learnku.com/articles/4038/tutorial-two-write-a-search-solve-the-search-results-highlight-the-problem-using-laravel-scout-elasticsearch-ik-word-segmentation
+        collect($items)->map(function ($item) use ($search) {
+            $item->setAttribute('highlight', $search->highlight($item->name));
+        })->all();
+        return $items;
     }
 
     /**
