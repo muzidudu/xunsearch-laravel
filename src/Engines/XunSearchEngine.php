@@ -192,6 +192,7 @@ class XunSearchEngine extends Engine
         // 设置高亮属性
         // https://github.com/matchish/laravel-scout-elasticsearch/issues/28
         // https://learnku.com/articles/4038/tutorial-two-write-a-search-solve-the-search-results-highlight-the-problem-using-laravel-scout-elasticsearch-ik-word-segmentation
+        $search = $this->getXSServer($builder)->search;
         collect($items)->map(function ($item) use ($search) {
             $item->setAttribute('highlight', $search->highlight($item->name));
         })->all();
